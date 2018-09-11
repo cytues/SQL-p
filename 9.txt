@@ -1,0 +1,5 @@
+select dm.dept_no, dm.emp_no, sa.salary
+from dept_manager as dm inner join salaries as sa
+on dm.emp_no = sa.emp_no
+and dm.to_date = '9999-01-01'
+and sa.to_date = '9999-01-01';

@@ -1,0 +1,5 @@
+-- 根据题意，本题要用两条语句完成，先用 CREATE UNIQUE INDEX ... ON ... 对first_name创建唯一索引值，
+-- 再用 CREATE INDEX ... ON ... 对last_name创建普通索引值
+
+create unique index uniq_idx_firstname on actor(first_name);
+create index idx_lastname on actor(last_name);

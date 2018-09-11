@@ -1,0 +1,4 @@
+select *
+from employees
+where hire_date in (select max(hire_date)
+                    from employees)

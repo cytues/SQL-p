@@ -1,0 +1,6 @@
+-- 本题要用到SQLite的聚合函数group_concat(X,Y)，其中X是要连接的字段，
+-- Y是连接时用的符号，可省略，默认为逗号。此函数必须与 GROUP BY 配合使用。
+
+select dept_no, group_concat(emp_no, ',')
+from dept_emp
+group by dept_no;

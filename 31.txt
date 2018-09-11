@@ -1,0 +1,2 @@
+-- 在SQLite数据库中，可以用 "EXPLAIN" 关键字或 "EXPLAIN QUERY PLAN" 短语，用于描述表的细节
+explain select * from employees;

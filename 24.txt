@@ -1,0 +1,13 @@
+-- 三表联结
+
+select d.dept_no, e.emp_no, s.salary
+from dept_emp as d join employees as e
+on d.emp_no = e.emp_no
+join salaries as s
+on d.emp_no = s.emp_no
+and s.to_date = '9999-01-01'
+and d.to_date = '9999-01-01'
+join dept_manager as de
+on d.dept_no = de.dept_no
+where e.emp_no not in (select emp_no -- 子查询查找出所有manager的emp_no，再使用not in排除。剩下的就是员工
+                       from dept_manager);

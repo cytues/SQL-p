@@ -1,0 +1,6 @@
+select de.dept_no, de.emp_no, max(sa.salary) as salary
+from dept_emp as de join salaries as sa
+on de.emp_no = sa.emp_no
+and de.to_date = '9999-01-01'
+and sa.to_date = '9999-01-01'
+group by de.dept_no;

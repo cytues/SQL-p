@@ -1,0 +1,12 @@
+-- 使用两个子查询建立sCurrent和sStart两张虚表
+-- 分别表示当前员工薪水和入职员工薪水
+
+select sCurrent.emp_no, (sCurrent.salary - sStart.salary) as growth -- 同样是现在减开始等于涨幅
+from (select s.emp_no, s.salary from employees as e, salaries as s
+      where e.emp_no = s.emp_no
+            and s.to_date = '9999-01-01') as sCurrent,
+     (select s.emp_no, s.salary from employees as e, salaries as s
+      where e.emp_no = s.emp_no
+            and s.from_date = e.hire_date) as sStart
+where sCurrent.emp_no = sStart.emp_no
+order by growth;

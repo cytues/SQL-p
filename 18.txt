@@ -1,0 +1,10 @@
+
+-- 主查询接着查询排除掉最高薪水的员工的max薪水，即第二高
+select em.emp_no, max(sa.salary) as salary, em.last_name, em.first_name
+from employees as em join salaries as sa
+on em.emp_no = sa.emp_no
+and sa.to_date = '9999-01-01'
+-- 子查询找到薪水第一高，再用not in 排除掉
+where salary not in (select max(salary)
+                     from salaries
+                     where to_date = '9999-01-01')

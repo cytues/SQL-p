@@ -1,0 +1,4 @@
+select emp_no, count(emp_no) as t
+from salaries
+group by emp_no
+having t > 15;

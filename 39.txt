@@ -1,0 +1,6 @@
+-- SQLite中，使用 INDEXED BY 语句进行强制索引查询
+-- MySQL中，使用 FORCE INDEX 语句进行强制索引查询
+
+select *
+from salaries indexed by idx_emp_no
+where emp_no = '10005';

@@ -1,0 +1,4 @@
+select em.emp_no
+from employees as em left join dept_manager as dm
+on em.emp_no = dm.emp_no
+where dm.dept_no is null;

@@ -1,0 +1,19 @@
+-- 本题主要思想是创建两张表（一张记录当前所有员工的工资，另一张只记录部门经理的工资）进行比较，具体思路如下：
+-- 1、先用INNER JOIN连接salaries和demp_emp，建立当前所有员工的工资记录s1
+-- 2、再用INNER JOIN连接salaries和demp_manager，建立当前所有员工的工资记录s2
+-- 3、最后用限制条件s1.dept_no = s2.dept_no AND s1.salary > s2.salary找出同一部门中工资比经理高的员工，
+   并根据题意依次输出emp_no、manager_no、emp_salary、manager_salary
+
+
+
+select s1.emp_no as emp_no, s2.emp_no as manager_no, 
+       s1.salary as emp_salary, s2.salary as manager_salary
+from (select s.salary, d.emp_no, d.dept_no
+      from salaries as s, dept_emp as d
+      where s.emp_no = d.emp_no
+            and s.to_date = '9999-01-01') as s1,
+     (select s.salary, de.emp_no, de.dept_no
+      from salaries as s, dept_manager as de
+      where s.emp_no = de.emp_no
+            and s.to_date = '9999-01-01') as s2
+where s1.dept_no = s2.dept_no and s1.salary > s2.salary;

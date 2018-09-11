@@ -1,0 +1,14 @@
+本题的思路为复用 salaries 表进行子查询，最后以 s1.emp_no 排序输出求和结果。
+1、输出的第三个字段，是由一个 SELECT 子查询构成。将子查询内复用的 salaries 表记为 s2，
+主查询的 salaries 表记为 s1，当主查询的 s1.emp_no 确定时，对子查询中不大于 s1.emp_no 
+的 s2.emp_no 所对应的薪水求和
+2、注意是对员工当前的薪水求和，所以在主查询和子查询内都要加限定条件 to_date = '9999-01-01'
+
+select s1.emp_no, s1.salary,
+       (select sum(s2.salary)
+        from salaries as s2
+        where s2.emp_no <= s1.emp_no
+        and s2.to_date = '9999-01-01') as runing_total
+from salaries as s1
+where s1.to_date = '9999-01-01'
+order by s1.emp_no; 

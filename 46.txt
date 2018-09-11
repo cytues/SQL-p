@@ -1,0 +1,9 @@
+-- 由于SQLite中不能通过 ALTER TABLE ... ADD FOREIGN KEY ... REFERENCES ... 
+-- 语句来对已创建好的字段创建外键，
+-- 因此只能先删除表，再重新建表的过程中创建外键
+
+drop table audit;
+create table audit(
+    EMP_no INT NOT NULL,
+    create_date datetime not null,
+    foreign key(emp_no) references employees_test(ID));

@@ -1,0 +1,6 @@
+select tl.title, avg(sa.salary) as avg
+from titles as tl join salaries as sa
+on tl.emp_no = sa.emp_no
+and tl.to_date = '9999-01-01'
+and sa.to_date = '9999-01-01'
+group by tl.title;

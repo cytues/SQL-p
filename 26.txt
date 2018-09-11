@@ -1,0 +1,8 @@
+select d.dept_no, de.dept_name, t.title, count(t.title) as count
+from titles as t join dept_emp as d
+on t.emp_no = d.emp_no
+and t.to_date = '9999-01-01'
+and d.to_date = '9999-01-01'
+join departments as de
+on d.dept_no = de.dept_no
+group by d.dept_no, t.title;

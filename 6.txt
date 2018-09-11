@@ -1,0 +1,5 @@
+select em.emp_no, sa.salary
+from employees as em inner join salaries as sa
+on em.emp_no = sa.emp_no
+and em.hire_date = sa.from_date
+order by em.emp_no desc;

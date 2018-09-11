@@ -1,0 +1,5 @@
+-- 不同数据库连接字符串的方法不完全相同，MySQL、SQL Server、Oracle等数据库支持CONCAT方法，
+-- 而本题所用的SQLite数据库只支持用连接符号"||"来连接字符串
+
+select last_name || ' ' || first_name as name
+from employees;

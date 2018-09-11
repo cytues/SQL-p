@@ -1,0 +1,12 @@
+-- 做差值得出涨幅
+select (
+     -- 先用一个子查询查找出排序列中的最高薪水
+    (select salary
+     from salaries
+     where emp_no = '10001'
+     order by salary desc
+     limit 1) - (select salary -- 接着一个子查询找到排序列中的最低薪水
+                 from salaries
+                 where emp_no = '10001'
+                 order by salary
+                 limit 1)) as growth;

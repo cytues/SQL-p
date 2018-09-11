@@ -1,0 +1,3 @@
+select em.last_name, em.first_name, de.dept_no
+from employees as em inner join dept_emp as de
+on em.emp_no = de.emp_no;

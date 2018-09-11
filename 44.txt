@@ -1,0 +1,1 @@
+replace into titles_test values(5, 10005, 'Senior Engineer', '1986-06-26', '9999-01-01');

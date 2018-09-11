@@ -1,0 +1,4 @@
+SELECT de.dept_no, dp.dept_name, COUNT(s.salary) AS sum 
+FROM (dept_emp AS de INNER JOIN salaries AS s ON de.emp_no = s.emp_no) 
+INNER JOIN departments AS dp ON de.dept_no = dp.dept_no 
+GROUP BY de.dept_no;

@@ -1,0 +1,17 @@
+1、找到对应电影数量>=5的所有分类，建立成虚表cc：
+   (select category_id, count(film_id) as category_num from  film_category  
+   group by category_id having count(film_id)>=5) as cc
+2、设定限制条件 f.description like '%robot%'
+3、在表cc、f、fc、c中查找包括robot的电影对应的分类名称和对应的电影数目。
+
+
+select c.name, count(fc.film_id) as num
+from (select category_id, count(film_id)
+      from film_category
+      group by category_id
+      having count(film_id) >= 5) as cc,
+      film as f, category as c, film_category as fc
+where f.description like '%robot%'
+      and f.film_id = fc.film_id
+      and c.category_id = fc.category_id
+      and c.category_id = cc.category_id;
